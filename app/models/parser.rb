@@ -1,16 +1,13 @@
-require './lib/flight.rb'
-require 'awesome_print'
-require 'debugger'
 require 'csv'
-require 'date'
 
-class Parser 
+class Parser < ActiveRecord::Base
 
-	attr_reader :flights_csv, :columns, :rows, :output
+	attr_accessor :output
+	attr_reader :columns, :rows
 
 #["Carrier Code", "Date (MM/DD/YYYY)", "Flight Number", "Tail Number", "Origin Airport ", "Scheduled Arrival Time", "Actual Arrival Time", nil]
 	def initialize(path_to_csv)
-		@flights_csv = CSV.read(path_to_csv)
+		flights_csv = CSV.read(path_to_csv)
 		@columns = flights_csv.first
 		@rows = flights_csv[1..-1]
 		@output = []
@@ -30,10 +27,29 @@ class Parser
 		output
 	end
 
+
 	def add_to_database
 		parse_flights.each do |hash|
-			hash.each do |
+			hash.each do |attribute, value|
+			flight_object 
+			airline_object
+			airport_object
+			end
+		end
 	end
+
+
+{"Carrier Code"=>"UA", 
+    "Date (MM/DD/YYYY)"=>"12/31/2013",
+    Flights 
+    "Flight Number"=>"1686", 
+   # "Tail Number"=>"N24729", 
+   Airports
+    "Origin Airport "=>"SJU", 
+    Arrivals
+    "Scheduled Arrival Time"=>"19:20", 
+    "Actual Arrival Time"=>"19:37"
+}
 
 
 end

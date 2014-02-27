@@ -1,8 +1,12 @@
-
+       
 class Flight
 
 	attr_accessor :arrivals, :number
 	ALL = []
+    
+    def self.make_flights
+       Parser.new('lib/united.csv').add_to_database
+    end
 
 	def initialize(arrivals=[], number=rand(223..2046))
 		@number = number
