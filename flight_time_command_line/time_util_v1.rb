@@ -1,14 +1,13 @@
-class Flight < ActiveRecord::Base
-  
-  attr_accessible :number, :airline_id, :origin_airport_id, :destination_aiport_id 
+require 'ap'
 
-  belongs_to :airline
-  has_many :arrivals
-  belongs_to :origin_airport, :class_name => 'Airport', :foreign_key => 'origin_airport_id'
-  belongs_to :destination_airport, :class_name => 'Airport', :foreign_key => 'destination_airport_id'
-  
-  def self.make_flights
-     Parser.new('lib/united.csv').add_to_database
+class Flight
+
+  attr_accessor :arrivals
+  ALL = []
+
+  def initialize(arrivals=[])
+    @arrivals = arrivals
+    ALL << self
   end
 
   def parse_time
@@ -89,15 +88,13 @@ class Flight < ActiveRecord::Base
   def return_flight
     average_time = nil
     if arrivals[0].include?("pm") && arrivals[-1].include?("am") 
-      average_time = return_average_flight_time_midnight
+            average_time = return_average_flight_time_midnight
     elsif arrivals[0].include?("am") && arrivals[-1].include?("pm")
-      average_time = return_average_flight_time_midday
+            average_time = return_average_flight_time_midday
     else
-      average_time = return_average_flight_time
+            average_time = return_average_flight_time
     end
     average_time
   end
-
+   
 end
-
-

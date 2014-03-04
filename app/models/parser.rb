@@ -29,27 +29,27 @@ class Parser < ActiveRecord::Base
 
 
 	def add_to_database
-		parse_flights.each do |hash|
-			hash.each do |attribute, value|
-			flight_object 
-			airline_object
-			airport_object
-			end
-		end
+		# parse_flights.each do |hash|
+		# 	hash.each do |attribute, value|
+		# 	flight_object 
+		# 	airline_object
+		# 	airport_object
+		# 	end
+		# end
 	end
 
 
-{"Carrier Code"=>"UA", 
-    "Date (MM/DD/YYYY)"=>"12/31/2013",
-    Flights 
-    "Flight Number"=>"1686", 
-   # "Tail Number"=>"N24729", 
-   Airports
-    "Origin Airport "=>"SJU", 
-    Arrivals
-    "Scheduled Arrival Time"=>"19:20", 
-    "Actual Arrival Time"=>"19:37"
-}
+# {"Carrier Code"=>"UA", 
+#     "Date (MM/DD/YYYY)"=>"12/31/2013",
+#     Flights 
+#     "Flight Number"=>"1686", 
+#    # "Tail Number"=>"N24729", 
+#    Airports
+#     "Origin Airport "=>"SJU", 
+#     Arrivals
+#     "Scheduled Arrival Time"=>"19:20", 
+#     "Actual Arrival Time"=>"19:37"
+# }
 
 
 end

@@ -11,6 +11,9 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
 end
 
+#protect attributes from mass-assignment in ActiveRecord models.
+gem 'protected_attributes'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
