@@ -5,6 +5,9 @@ class Flight < ActiveRecord::Base
   belongs_to :airline
   has_many :trips
   has_many :airports, :through => :trips
+
+  #f.trips.where(:type => "Arrival")[0].actual_time
+  #f.airports
   
   def self.make_flights
      Parser.new('lib/united.csv').add_to_database

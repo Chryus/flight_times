@@ -27,15 +27,31 @@ class Parser < ActiveRecord::Base
 		output
 	end
 
-
-	def add_to_database
-		# parse_flights.each do |hash|
-		# 	hash.each do |attribute, value|
-		# 	flight_object 
-		# 	airline_object
-		# 	airport_object
-		# 	end
-		# end
+#["Carrier Code", "Date (MM/DD/YYYY)", "Flight Number", "Tail Number", "Origin Airport ", "Scheduled Arrival Time", "Actual Arrival Time", nil]
+	def add_to_database(destination_id)
+		parse_flights.each do |hash|
+			hash.each do |attribute, value|
+			airline_object = Airline.create(:name => hash["Carrier Code"])
+			flight_object = Flight.create(
+				:number => hash["Flight Number"]
+				:airline_id => airport_object.id	
+				)
+			airport_object => Airport.create(:name => hash["Origin Airport"])
+			arrival_object = Arrival.create(
+				:date => hash["Date (MM/DD/YYYY)"]
+				:scheduled_time => hash["Scheduled Arrival Time"]
+    		:actual_time => hash["Actual Arrival Time"]
+    		:flight_id => flight_object.id
+    		:airport_id => airport_object.id
+				)
+			departure_object = Departure.create(
+				:date => hash["Date (MM/DD/YYYY)"]
+    		:flight_id => flight_object.id
+    		:airport_id => destination_id
+				)
+			airport_object
+			end
+		end
 	end
 
 
