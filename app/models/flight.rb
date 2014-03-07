@@ -1,11 +1,10 @@
 class Flight < ActiveRecord::Base
   
-  attr_accessible :number, :airline_id, :origin_airport_id, :destination_aiport_id 
+  attr_accessible :number, :airline_id
 
   belongs_to :airline
-  has_many :arrivals
-  belongs_to :origin_airport, :class_name => 'Airport', :foreign_key => 'origin_airport_id'
-  belongs_to :destination_airport, :class_name => 'Airport', :foreign_key => 'destination_airport_id'
+  has_many :trips
+  has_many :airports, :through => :trips
   
   def self.make_flights
      Parser.new('lib/united.csv').add_to_database

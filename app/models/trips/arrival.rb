@@ -1,0 +1,3 @@
+class Arrival < Trip
+  
+end

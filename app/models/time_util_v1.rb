@@ -1,4 +1,4 @@
-Wrequire 'ap'
+require 'ap'
 
 class Flight
 

@@ -1,7 +1,8 @@
 class Airline < ActiveRecord::Base
 
-  attr_accessible :carrier
+  attr_accessible :name
 
   has_many :flights
-  
+  has_many :trips, :through => :flights
+      
 end
