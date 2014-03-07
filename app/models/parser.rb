@@ -1,6 +1,6 @@
 require 'csv'
 
-class Parser < ActiveRecord::Base
+class Parser
 
 	attr_accessor :output
 	attr_reader :columns, :rows
@@ -27,33 +27,33 @@ class Parser < ActiveRecord::Base
 	end
 
 #["Carrier Code", "Date (MM/DD/YYYY)", "Flight Number", "Tail Number", "Origin Airport ", "Scheduled Arrival Time", "Actual Arrival Time", nil]
-	def add_to_database(orgin_id)
+	def add_to_database(origin_id)
 		parse_flights.each do |hash|
 			hash.each do |attribute, value|
 			airline_object = Airline.create(:name => hash["Carrier Code"])
 			flight_object = Flight.create(
-				:number => hash["Flight Number"]
-				:airline_id => airport_object.id	
+				:number => hash["Flight Number"],
+				:airline_id => airline_object.id	
 				)
-			airport_object => Airport.create(:name => hash["Origin Airport"])
+			airport_object = Airport.create(:name => hash["Origin Airport"])
 			arrival_object = Arrival.create(
-				:date => hash["Date (MM/DD/YYYY)"]
-				:scheduled_time => hash["Scheduled Arrival Time"]
-    		:actual_time => hash["Actual Arrival Time"]
-    		:flight_id => flight_object.id
+				:date => hash["Date (MM/DD/YYYY)"],
+				:scheduled_time => hash["Scheduled Arrival Time"],
+    		:actual_time => hash["Actual Arrival Time"],
+    		:flight_id => flight_object.id,
     		:airport_id => airport_object.id
 				)
 			departure_object = Departure.create(
-				:date => hash["Date (MM/DD/YYYY)"]
-    		:flight_id => flight_object.id
+				:date => hash["Date (MM/DD/YYYY)"],
+    		:flight_id => flight_object.id,
     		:airport_id => origin_id
 				)
 			end
 		end
 	end
 
-end
+	def self.make_objects(origin_id)
+     Parser.new('lib/united.csv').add_to_database(origin_id)
+  end
 
-# p = Parser.new('united.csv')
-# p.flights_csv
-# parser.flights_csv.first
+end

@@ -8,10 +8,6 @@ class Flight < ActiveRecord::Base
 
   #f.trips.where(:type => "Arrival")[0].actual_time
   #f.airports
-  
-  def self.make_flights
-     Parser.new('lib/united.csv').add_to_database
-  end
 
   def parse_time
     reg = /(\d{2}|\d{1}):(\d{2})/
