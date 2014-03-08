@@ -10,7 +10,8 @@ class Flight < ActiveRecord::Base
 
   def self.get_flight_times number, origin #searches for a flight be number and returns an array of arrival times for that flight
     flight = Flight.find_by_number number
-    times = flight.trips.where(:type => "Arrival").collect { |arrival| arrival.actual_time }
+    airport = Airport.find_by_name origin
+    times = flight.trips.where(:type => "Arrival", :airport_id => airport.id).collect { |arrival| arrival.actual_time }
   end
       
   def parse_time
