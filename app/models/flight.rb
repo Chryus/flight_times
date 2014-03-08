@@ -6,6 +6,11 @@ class Flight < ActiveRecord::Base
   has_many :trips
   has_many :airports, :through => :trips
 
+  
+
+  def get_flights flight
+    
+    flight.trips.where(:type => "Arrival")[0].actual_time
   #f.trips.where(:type => "Arrival")[0].actual_time
   #f.airports
 

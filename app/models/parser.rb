@@ -41,14 +41,18 @@ class Parser
 			new_date = format_date date
 			airline = hash["Carrier Code"]
 			airport = hash["Origin Airport "]
+			number = hash["Flight Number"]
 			airline_object = Airline.find_by_name(airline)
 			if airline_object.nil?
 				airline_object = Airline.create(:name => hash["Carrier Code"])
 			end
-			flight_object = Flight.create(
-				:number => hash["Flight Number"],
-				:airline_id => airline_object.id	
-				)
+			flight_object = Flight.find_by_number(number)
+			if flight_object.nil?
+				flight_object = Flight.create(
+					:number => hash["Flight Number"],
+					:airline_id => airline_object.id	
+					)
+			end
 			airport_object = Airport.find_by_name(airport)
 			if airport_object.nil? #if the current airport in the hash isn't already in the database, make it
 				airport_object = Airport.create(:name => hash["Origin Airport "])
