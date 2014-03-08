@@ -10,6 +10,7 @@ class Airport < ActiveRecord::Base
     if airport_object.nil? #if the current airport in the hash isn't already in the database, make it
         airport_object = Airport.create(:name => airport)
     end
+    airport_object
   end
 
 end
