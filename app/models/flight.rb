@@ -1,3 +1,5 @@
+require 'debugger'
+
 class Flight < ActiveRecord::Base
   
   attr_accessible :number, :airline_id
@@ -6,14 +8,11 @@ class Flight < ActiveRecord::Base
   has_many :trips
   has_many :airports, :through => :trips
 
-  
-
-  def get_flights flight
-    
-    flight.trips.where(:type => "Arrival")[0].actual_time
-  #f.trips.where(:type => "Arrival")[0].actual_time
-  #f.airports
-
+  def self.get_flight_times number, origin #searches for a flight be number and returns an array of arrival times for that flight
+    flight = Flight.find_by_number number
+    times = flight.trips.where(:type => "Arrival").collect { |arrival| arrival.actual_time }
+  end
+      
   def parse_time
     reg = /(\d{2}|\d{1}):(\d{2})/
     time_parse = arrivals.collect {|time| time.scan(reg)}.flatten
