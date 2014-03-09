@@ -33,7 +33,8 @@ class Parser
   end
 
 #["Carrier Code", "Date (MM/DD/YYYY)", "Flight Number", "Tail Number", "Origin Airport ", "Scheduled Arrival Time", "Actual Arrival Time", nil]
-	def add_to_database destination_id
+	def add_to_database destination
+		destination_airport = Airport.make_destination destination
 		parse_flights.each do |hash|
 			next if hash["Actual Arrival Time"] == "00:00"
 			date = hash["Date (MM/DD/YYYY)"]
@@ -61,12 +62,12 @@ class Parser
 				:scheduled_time => hash["Scheduled Arrival Time"],
 	  		:actual_time => hash["Actual Arrival Time"],
 	  		:flight_id => flight_object.id,
-	  		:airport_id => destination_id
+	  		:airport_id => airport_object.id
 				)
 			departure_object = Departure.create(
 				:date => new_date,
 	  		:flight_id => flight_object.id,
-	  		:airport_id => airport_object.id
+	  		:airport_id => destination_airport.id
 				)
 		end
 	end
