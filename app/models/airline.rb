@@ -4,5 +4,7 @@ class Airline < ActiveRecord::Base
 
   has_many :flights
   has_many :trips, :through => :flights
+
+  validates :name, presence: true
       
 end

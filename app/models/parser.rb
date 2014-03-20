@@ -62,18 +62,14 @@ class Parser
 				:scheduled_time => hash["Scheduled Arrival Time"],
 	  		:actual_time => hash["Actual Arrival Time"],
 	  		:flight_id => flight_object.id,
-	  		:airport_id => airport_object.id
-				)
-			departure_object = Departure.create(
-				:date => new_date,
-	  		:flight_id => flight_object.id,
-	  		:airport_id => destination_airport.id
-				)
+	  		:origin_airport_id => airport_object.id,
+	  		:destination_airport_id => destination_airport.id
+	  		)
 		end
 	end
 
-	def self.make_objects origin_id
-     Parser.new('lib/united.csv').add_to_database origin_id
+	def self.make_objects destination
+     Parser.new('lib/united.csv').add_to_database destination
   end
 
 end

@@ -9,6 +9,7 @@ group :development, :test do
   gem "debugger"
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
+  gem 'factory_girl_rails'
 end
 
 #protect attributes from mass-assignment in ActiveRecord models.

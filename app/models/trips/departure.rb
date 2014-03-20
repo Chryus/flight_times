@@ -1,3 +1,0 @@
-class Departure < Trip
-
-end
