@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Arrival do
 
-  let!(:arrival1) { Arrival.create(:date => "2013-12-01", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 1, :origin_airport_id =>1, :destination_airport_id => 1) }
-  let!(:arrival2) { Arrival.create(:date => "2013-12-03", :scheduled_time => "12:00", :actual_time => "13:28", :flight_id => 1, :origin_airport_id =>1, :destination_airport_id => 1) }
-  let!(:arrival3) { Arrival.create(:date => "2013-12-05", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 1, :origin_airport_id =>2, :destination_airport_id => 1) }
-  let!(:arrival4) { Arrival.create(:date => "2013-12-07", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 2, :origin_airport_id =>2, :destination_airport_id => 1) }
+  let!(:arrival1) { FactoryGirl.create(:arrival, :date => "2013-12-01", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 1, :origin_airport_id =>1, :destination_airport_id => 1) }
+  let!(:arrival2) { FactoryGirl.create(:arrival, :date => "2013-12-03", :scheduled_time => "12:00", :actual_time => "13:28", :flight_id => 1, :origin_airport_id =>1, :destination_airport_id => 1) }
+  let!(:arrival3) { FactoryGirl.create(:arrival, :date => "2013-12-05", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 1, :origin_airport_id =>2, :destination_airport_id => 1) }
+  let!(:arrival4) { FactoryGirl.create(:arrival, :date => "2013-12-07", :scheduled_time => "12:00", :actual_time => "12:05", :flight_id => 2, :origin_airport_id =>2, :destination_airport_id => 1) }
 
   describe ".get_arrival_times" do 
 
