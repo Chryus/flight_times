@@ -18,4 +18,8 @@ FactoryGirl.define do
     destination_airport_id 0
   end
 
+  factory :time_parser do 
+    times
+  end
+
 end

@@ -1,4 +1,10 @@
-class timeParser
+class TimeParser
+
+  attr_accessor :times
+
+  def initialize (flight_id, origin_airport_id)
+    @arrival_times_array = Arrival.get_arrival_times(flight_id, origin_airport_id)
+  end
 
   def parse_time
     reg = /(\d{2}|\d{1}):(\d{2})/

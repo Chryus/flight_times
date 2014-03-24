@@ -31,11 +31,6 @@ describe Arrival do
     end
   end
 
-  describe ".average"
-
-Convert the data to minutes, avg the total minutes and then back to a time.
-
-
 end
 
 

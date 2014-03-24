@@ -2,7 +2,7 @@ require './time_util_challenge.rb'
 
 describe "Flight, #initialize" do 
 
-  it 'Can initialize a subtitle' do
+  it 'Can initialize a flight' do
     lambda {Flight.new}.should_not raise_error
   end
 
