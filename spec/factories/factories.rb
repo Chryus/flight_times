@@ -19,7 +19,7 @@ FactoryGirl.define do
   end
 
   factory :time_parser do 
-    times
+    arrival_times_array []
   end
 
 end
