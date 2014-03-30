@@ -8,7 +8,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara', '2.1.0'
   gem 'selenium-webdriver', '~> 2.40.0'
-  gem 'gaurd-rspec'
+  gem 'guard-rspec'
   gem 'launchy' #for debugging with save_and_open_page method
 end
 
