@@ -6,10 +6,20 @@ group :test do
 end
 
 group :development, :test do
-  gem "debugger"
   gem 'sqlite3', '1.3.8'
+  gem 'debugger'
+  gem 'better_errors'
   gem 'rspec-rails', '2.13.1'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara', '2.1.0'
+  gem 'selenium-webdriver', '~> 2.40.0'
+  gem 'gaurd-rspec'
+  gem 'launchy' #for debugging with save_and_open_page method
+end
+
+group :production do 
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
 end
 
 #protect attributes from mass-assignment in ActiveRecord models.
